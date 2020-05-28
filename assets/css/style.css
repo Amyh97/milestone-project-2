@@ -42,6 +42,28 @@
         font-weight: 700;
     }
 
+    .search {
+        text-align: center;
+        padding-top: 8rem;
+    }
+
+    .search input {
+        border:2px solid #388e3c;
+        border-radius: 4px;
+
+    }
+
+    .search button {
+        color: #fff;
+        background-color: #388e3c;
+        border-radius: 4px;
+    }
+
+    @media (max-width:750px) {
+        .search {
+            padding-top: 3rem;
+        }
+    }
     /*---accomodation---*/
 
     .accommodation {

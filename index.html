@@ -13,7 +13,7 @@
 <header>
     <div class="row">
         <div class="col-md-1">
-            <i class="fas fa-globe-europe"></i>
+            <a href="index.html"><i class="fas fa-globe-europe"></i></a>
         </div>
         <div class="col-md-10"
             <h1 id="title">Where to...?</h1>
@@ -30,6 +30,12 @@
                 <li class="list-inline-item">Attractions</li>
             </ul>
         </div>
+        <div class="search">
+           <input type="text" id="location" placeholder="search counrty" required>
+           <input type="date" id="check-in-date" required>
+           <input type="date" id="check-out-date" required>
+           <button type="submit" oninput="getData()">Search</button>
+        </div>
     </div>
     <div class="api-section">
         
@@ -40,5 +46,6 @@
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="assets/js/accommodation/js"></script>
 </body>
 </html>
