@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<title>Where to...?|Accommodation</title>
+<title>Where to...?|Weather</title>
 </head>
 <body>
 <header>
@@ -21,19 +21,17 @@
     </div>
 </header>
 <section>
-    <div class="hero-image no-gutters accommodation">
+    <div class="hero-image no-gutters weather">
         <div>
             <ul class=" menu list-inline">
-                <li class = "list-inline-item"><a href="weather.html">Weather</a></li>
+                <li class = "list-inline-item active"><a href="weather.html">Weather</a></li>
                 <li class = "list-inline-item"><a href="#">Flights</a></li>
-                <li class="list-inline-item active"><a href="index.html">Accommodation</a></li>
+                <li class="list-inline-item"><a href="index.html">Accommodation</a></li>
                 <li class="list-inline-item"><a href="#">Attractions</a></li>
             </ul>
         </div>
         <div class="search">
-           <input type="text" id="location" placeholder="search counrty" required>
-           <input type="date" id="check-in-date" required>
-           <input type="date" id="check-out-date" required>
+           <input type="text" id="city" placeholder="search city" required>
            <button type="submit" oninput="getData()">Search</button>
         </div>
     </div>
