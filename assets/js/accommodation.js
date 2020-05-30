@@ -1,23 +1,13 @@
-var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://manthankool-makcorps-hotel-price-comparison-v1.p.rapidapi.com/king/v2/%7Bjakarta%7D/%7B2018-05-25%7D/%7B2018-05-28%7D",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "manthankool-makcorps-hotel-price-comparison-v1.p.rapidapi.com",
-		"x-rapidapi-key": "8e454c9b0dmshf8a12541aa166abp100ea0jsnb6ef553fc5b2",
-		"authorization": "JWT {{jwt_token}}"
-	}
-}
+var city = paris
+$.getJSON("api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=fe767e37e56f5430e6ee4b7337d52151",function(data){
+    console.log(data);
 
-$.ajax(settings).done(function (response) {
-	console.log(response);
+    var icon = "http.openweathermap.org/img/w/"+ data.weather[0].icon +".png";
+    var temp = Math.floor(data.main.temp);
+    var weather = data.weather[0].main;
+
+    $(".icon").attr("src", icon);
+    $(".temp").append(temp);
+    $(".weather").append(weather);
+
 });
-
-function(getData) {
-    return `
-        <div>
-            
-        </div>
-    `
-}
