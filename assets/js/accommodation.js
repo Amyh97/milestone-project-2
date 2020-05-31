@@ -1,13 +1,32 @@
-var city = paris
-$.getJSON("api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=fe767e37e56f5430e6ee4b7337d52151",function(data){
-    console.log(data);
+var location = $("#location").val()
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=mi&query=${location}",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+		"x-rapidapi-key": "8e454c9b0dmshf8a12541aa166abp100ea0jsnb6ef553fc5b2"
+	}
+}
 
-    var icon = "http.openweathermap.org/img/w/"+ data.weather[0].icon +".png";
-    var temp = Math.floor(data.main.temp);
-    var weather = data.weather[0].main;
+$.ajax(settings).done(function (response) {
+	console.log(response.data[0].result_object.location_id);
+});
 
-    $(".icon").attr("src", icon);
-    $(".temp").append(temp);
-    $(".weather").append(weather);
+var id = respo.data[0].result_object.location_id;
 
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://tripadvisor1.p.rapidapi.com/hotels/list?offset=0&currency=GBP&limit=30&order=asc&lang=en_US&sort=recommended&location_id=${id}&adults=1&checkin=%3Crequired%3E&rooms=1&nights=2",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+		"x-rapidapi-key": "8e454c9b0dmshf8a12541aa166abp100ea0jsnb6ef553fc5b2"
+	}
+}
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
 });
