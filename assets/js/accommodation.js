@@ -6,7 +6,7 @@ var settings = {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-		"x-rapidapi-key": "8e454c9b0dmshf8a12541aa166abp100ea0jsnb6ef553fc5b2"
+		"x-rapidapi-key": "5016226057msh752c3a66045bae2p13d849jsnd78e30e17efa"
 	}
 }
 
@@ -14,8 +14,9 @@ $.ajax(settings).done(function (response) {
 	console.log(response.data[0].result_object.location_id);
 });
 
-var id = respo.data[0].result_object.location_id;
+var id = response.data[0].result_object.location_id;
 
+$("button").click(function() {
 var settings = {
 	"async": true,
 	"crossDomain": true,
@@ -28,5 +29,6 @@ var settings = {
 }
 
 $.ajax(settings).done(function (response) {
-	console.log(response);
+	$(".api-section").HTMLtext(response);
+});
 });
