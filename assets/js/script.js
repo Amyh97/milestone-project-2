@@ -1,34 +1,24 @@
-var location = $("#location").val()
-var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=mi&query=${location}",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-		"x-rapidapi-key": "5016226057msh752c3a66045bae2p13d849jsnd78e30e17efa"
-	}
+var location = $("#location").val();
+
+function getData(location, cb) {
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("GET", `https://tripadvisor1.p.rapidapi.com/locations/search?location_id=1&limit=30&sort=relevance&offset=0&lang=en_US&currency=GBP&units=km&query=${location}`);
+  xhr.setRequestHeader("x-rapidapi-host", "tripadvisor1.p.rapidapi.com");
+  xhr.setRequestHeader("x-rapidapi-key", "8e454c9b0dmshf8a12541aa166abp100ea0jsnb6ef553fc5b2");
+
+  xhr.send();
+
+  xhr.onreadystatechange = function() { 
+  if(this.readystate == 4 && this.status == 200) {
+    cb(JSON.parse(this.responseText));
+    }
+  };
 }
 
-$.ajax(settings).done(function (response) {
-	console.log(response.data[0].result_object.location_id);
-});
-
-var id = response.data[0].result_object.location_id;
-
-$("button").click(function() {
-var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://tripadvisor1.p.rapidapi.com/hotels/list?offset=0&currency=GBP&limit=30&order=asc&lang=en_US&sort=recommended&location_id=${id}&adults=1&checkin=%3Crequired%3E&rooms=1&nights=2",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-		"x-rapidapi-key": "8e454c9b0dmshf8a12541aa166abp100ea0jsnb6ef553fc5b2"
-	}
+function writeToDocument(type) {
+    getData(type, function(data) {
+        data = data[0].result_object.location_id;
+        document.getElementById("api-section").innerHTML= data;
+    })
 }
-
-$.ajax(settings).done(function (response) {
-	$(".api-section").HTMLtext(response);
-});
-});
